@@ -1,9 +1,13 @@
 // frozen_string_literal: true
 
 import 'package:flutter/material.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'sql_helper.dart';
 
 void main() {
+  sqfliteFfiInit();
+  databaseFactory = databaseFactoryFfi;
+
   runApp(const MyApp());
 }
 
@@ -68,7 +72,7 @@ class _HomePageState extends State<HomePage> {
             color: Colors.orange[200],
             margin: const EdgeInsets.all(15),
             child: ListTile(
-              title: Text(_journals[index]['description']),
+              title: Text(_journals[index]['title']),
               subtitle: Text(_journals[index]['description']),
               trailing: SizedBox(
                 width: 100,
